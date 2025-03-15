@@ -10,7 +10,7 @@ namespace Array_and_List__HW
     internal class Program
     {
         // Общие данные для работы приложения
-        static readonly List<string> transactions = new();
+        static readonly List<string> tasks = new();
         static string userName = "";
 
         // Тексты для сообщений
@@ -122,21 +122,21 @@ namespace Array_and_List__HW
         static void AddTask()
         {
             Console.WriteLine($"Уважаемый {userName}, {addTaskText}");
-            string newTransaction = Console.ReadLine() ?? "";
-            transactions.Add(newTransaction);
-            Console.WriteLine($"Ваша задача \"{newTransaction}\" добавлена.");
+            string newTask = Console.ReadLine() ?? "";
+            tasks.Add(newTask);
+            Console.WriteLine($"Ваша задача \"{newTask}\" добавлена.");
         }
 
         static void ShowTasks()
         {
             Console.WriteLine($"Уважаемый {userName}, {showTasksText}");
-            if (transactions.Count > 0)
+            if (tasks.Count > 0)
             {
-                int transactionCounter = 1;
-                foreach (var transaction in transactions)
+                int taskCounter = 1;
+                foreach (var task in tasks)
                 {
-                    Console.WriteLine($"{transactionCounter}. {transaction}");
-                    transactionCounter++;
+                    Console.WriteLine($"{taskCounter}. {task}");
+                    taskCounter++;
                 }
 
             }
@@ -149,7 +149,7 @@ namespace Array_and_List__HW
         static void RemoveTask()
         {
             Console.WriteLine($"Уважаемый {userName}, {removeTaskText}");
-            if (transactions.Count == 0)
+            if (tasks.Count == 0)
             {
                 Console.WriteLine("Список задач пуст. Удалять нечего.");
                 return;
@@ -160,11 +160,11 @@ namespace Array_and_List__HW
             {
                 Console.WriteLine("Введите номер задачи (начиная с 1):");
 
-                int transactionCounter = 1;
-                foreach (var transaction in transactions)
+                int taskCounter = 1;
+                foreach (var task in tasks)
                 {
-                    Console.WriteLine($"{transactionCounter}. {transaction}");
-                    transactionCounter++;
+                    Console.WriteLine($"{taskCounter}. {task}");
+                    taskCounter++;
                 }
 
                 string transactionNumber = Console.ReadLine() ?? "";
@@ -174,16 +174,16 @@ namespace Array_and_List__HW
                     continue;
                 }
 
-                if (index <= 0 || index > transactions.Count)
+                if (index <= 0 || index > tasks.Count)
                 {
                     Console.WriteLine("Такой транзакции в списке нет. Повторите ввод.");
                     continue;
                 }
 
                 index--;
-                string removedTransaction = transactions[index];
-                transactions.RemoveAt(index);
-                Console.WriteLine($"Задача {index + 1}. {removedTransaction} удалена.");
+                string removedTask = tasks[index];
+                tasks.RemoveAt(index);
+                Console.WriteLine($"Задача {index + 1}. {removedTask} удалена.");
 
                 break;
             }
