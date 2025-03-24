@@ -123,38 +123,13 @@ namespace ExceptionUsage_HW
                     {
                         Console.WriteLine($"Ошибка: {ex.Message}");
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Произошла непредвиденная ошибка:");
-                        Console.WriteLine($"Тип: {ex.GetType()}");
-                        Console.WriteLine($"Сообщение: {ex.Message}");
-                        Console.WriteLine($"StackTrace: {ex.StackTrace}");
-                        if (ex.InnerException != null)
-                        {
-                            Console.WriteLine($"InnerException: {ex.InnerException}");
-                        }
-                    }
+                   
                     command = Console.ReadLine() ?? "";
                 }
 
                 ProcessExit();
             }
-            catch(TaskCountLimitException ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-            }
-            catch(TaskLengthLimitException ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-            }
-            catch (DuplicateTaskException ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Ошибка: {ex.Message}");
-            }
+            
             catch (Exception ex)
             {
                 Console.WriteLine("Произошла непредвиденная ошибка:");
@@ -294,45 +269,12 @@ namespace ExceptionUsage_HW
                 break;
             }
 
-            #region Преобразуем индекс для 0-based нумерации
-            // Преобразуем индекс для 0-based нумерации
-            //index--;
-
-
-            //LinkedListNode<string>? node = transactions.First;
-            //int currentIndex = 0;
-            //while (node != null && currentIndex < index)
-            //{
-            //    node = node.Next;
-            //    currentIndex++;
-            //}
-
-            //if (node != null)
-            //{
-            //    transactions.Remove(node);
-            //    Console.WriteLine("Транзакция удалена.");
-            //}
-            #endregion
         }
 
         static void ProcessExit()
         {
             Console.WriteLine($"Уважаемый {userName}, {exitText}");
         }
-
-        #region Использование метода для ввывода сообщения
-        //static void LogException(Exception ex)
-        //{
-        //    Console.WriteLine("Произошла непредвиденная ошибка:");
-        //    Console.WriteLine($"Тип: {ex.GetType()}");
-        //    Console.WriteLine($"Сообщение: {ex.Message}");
-        //    Console.WriteLine($"StackTrace: {ex.StackTrace}");
-        //    if (ex.InnerException != null)
-        //    {
-        //        Console.WriteLine($"InnerException: {ex.InnerException}");
-        //    }
-        //}
-        #endregion
 
         static int ParseAndValidateInt(string? input, int minValue, int maxValue)
         {
@@ -355,51 +297,6 @@ namespace ExceptionUsage_HW
             }
         }
 
-            #region PrintTransacrtions
-            //static void PrintTransactions(ref int transactionCounter)
-            //{
-            //    foreach (var transaction in transactions)
-            //    {
-            //        Console.WriteLine($"{transactionCounter}. {transaction}");
-            //        transactionCounter++;
-
-            //    }
-            //}
-            #endregion
         }
-
-    class TaskCountLimitException : Exception
-    {
-        public TaskCountLimitException() : base()
-        {
-        }
-        public TaskCountLimitException(int taskCountLimit) : base()
-        {
-            Console.WriteLine($"Превышено максимальное количество задач: {taskCountLimit}");
-        }
-    }
-
-    class TaskLengthLimitException : Exception
-    { 
-    public TaskLengthLimitException() : base()
-        {
-
-        }
-        public TaskLengthLimitException(int taskLength, int taskLengthLimit) : base()
-        {
-            Console.WriteLine($"Длина задачи ‘{taskLength}’ превышает максимально допустимое значение {taskLengthLimit}");
-        }
-    }
-
-    class DuplicateTaskException : Exception
-    {
-        public DuplicateTaskException() : base()
-        {
-        }
-        public DuplicateTaskException(string task) : base()
-        {
-            Console.WriteLine($"Задача ‘{task}’ уже существует");
-        }
-    }
 
     }
