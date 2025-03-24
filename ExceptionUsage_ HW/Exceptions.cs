@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExceptionUsage_HW
 {
-    internal class Exceptions
-    {
-    }
+   
     class TaskCountLimitException : Exception
     {
-        public TaskCountLimitException() : base()
-        {
-        }
         public TaskCountLimitException(int taskCountLimit) : base($"Превышено максимальное количество задач: {taskCountLimit}")
         {
         }
@@ -21,10 +16,6 @@ namespace ExceptionUsage_HW
 
     class TaskLengthLimitException : Exception
     {
-        public TaskLengthLimitException() : base()
-        {
-
-        }
         public TaskLengthLimitException(int taskLength, int taskLengthLimit) : base($"Длина задачи ‘{taskLength}’ превышает максимально допустимое значение {taskLengthLimit}")
         {
         }
@@ -32,9 +23,6 @@ namespace ExceptionUsage_HW
 
     class DuplicateTaskException : Exception
     {
-        public DuplicateTaskException() : base()
-        {
-        }
         public DuplicateTaskException(string task) : base($"Задача ‘{task}’ уже существует")
         {
         }
